@@ -37,6 +37,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 18px;
+    margin: 10px 0 0 0;
 }
 
 .personaje-card {
@@ -53,4 +54,70 @@ body {
 .personaje-card h3,
 .personaje-card p {
   margin: 8px 12px;
+}
+
+.res-button{
+  min-height: 42px;
+    padding: 0 16px;
+    color: #c7d0e6;
+    background: #171e30;
+    border: 1px solid #262f45;
+    border-radius: 10px;
+    font: inherit;
+    font-size: .84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease;
+}
+
+.res-button:hover{
+  color: #d4ffb0;
+    border-color: #97ce4c;
+    outline: none;
+}
+
+.contador{
+  margin: 0 0 6px;
+  color: #8d97b3;
+  font-size: 1rem;
+}
+
+.contadoresIndividuales-span{
+  color: #8d97b3;
+  font-size: .92rem;
+}
+
+.todosVivos-span{
+    color: #b6f3ce;
+    background: rgba(151, 206, 76, .16);
+}
+
+.hayMuertos-span:empty, .todosVivos-span:empty{
+  display: none;
+}
+
+.hayMuertos-span{
+  color: #ffb3b3;
+  background: rgba(240, 96, 96, .16);
+}
+.badge{
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.card-meta{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px 2px 8px;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-style{
+
 }

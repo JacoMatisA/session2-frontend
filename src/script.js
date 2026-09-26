@@ -13,6 +13,10 @@ function filtrarPorEstado(personajes, estado) {
     return personajes;
   }
   else{
+    /* console.log(personajes.filter(Personaje => Personaje.status === estado));
+    console.log(estado); */
+    
+
     return personajes.filter(Personaje => Personaje.status === estado);
   }// TODO: si estado viene vacío, devuelve personajes tal cual. Si no, filtra
   // dejando solo los que coinciden (repasa el ejercicio 2 de la práctica).
@@ -72,13 +76,26 @@ function contarVivos(personajes) {
   }, 0);
 }
 
+function contarMuertos(personajes) {
+  return personajes.reduce(function (total, personaje) {
+    return personaje.status === "Dead"? total+1:total;
+  }, 0);
+}
+
+function contarDesconocidos(personajes) {
+  return personajes.reduce(function (total, personaje) {
+    return personaje.status === "unknown"? total+1:total;
+  }, 0);
+}
+
 let personajes = [];
 
 function aplicarFiltros() {
+  setTimeout(() => {
   const nombre = document.querySelector("#filtro-nombre").value.trim().toLowerCase();
   const estado = document.querySelector("#filtro-estado").value;
   const especie = document.querySelector("#filtro-especie").value;
-
+  
   let filtrados = filtrarPorEstado(personajes, estado);
   filtrados = filtrarPorEspecie(filtrados, especie);
   filtrados = filtrados.filter(function (personaje) {
@@ -86,11 +103,15 @@ function aplicarFiltros() {
   });
 
   pintarResultados(filtrados);
+  },0);
 }
 
 function pintarResultados(lista) {
   const contenedor = document.querySelector("#resultados");
   document.querySelector("#contador").textContent = lista.length + " personajes encontrados";
+  document.querySelector("#contadoresIndividuales").textContent = contarVivos(lista)+ " vivos · "+contarMuertos(lista)+" muertos · "+contarDesconocidos(lista)+" desconocidos";
+  document.querySelector("#hayMuertos").textContent = hayPersonajesMuertos(lista)?"Hay muertos en el resultado":null;
+  document.querySelector("#todosVivos").textContent = todosVivos(lista)?"Todos Vivos":null;
 
   contenedor.innerHTML = lista
     .map(function (personaje) {
@@ -98,7 +119,7 @@ function pintarResultados(lista) {
         '<article class="personaje-card">' +
         '<img src="' + personaje.image + '" alt="' + personaje.name + '" />' +
         "<h3>" + personaje.name + "</h3>" +
-        "<p>" + personaje.status + " · " + personaje.species + "</p>" +
+        "<p class='card-meta'><span>" +  personaje.status + "</span>" + personaje.species + "</p>" +
         "</article>"
       );
     })

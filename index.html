@@ -15,8 +15,8 @@
       <input type="text" id="filtro-nombre" placeholder="Buscar por nombre..." />
       <select id="filtro-estado">
         <option value="">Todos los estados</option>
-        <option value="alive">Vivo</option>
-        <option value="dead">Muerto</option>
+        <option value="Alive">Vivo</option>
+        <option value="Dead">Muerto</option>
         <option value="unknown">Desconocido</option>
       </select>
       <select id="filtro-especie">
@@ -24,9 +24,13 @@
         <option value="Human">Humano</option>
         <option value="Alien">Alien</option>
       </select>
+      <button class="res-button" type="reset" onclick="aplicarFiltros()">Reiniciar filtros</button>
     </form>
 
-    <p id="contador"></p>
+    <p id="contador" class="contador"></p>
+    <span id="contadoresIndividuales" class="contadoresIndividuales-span"></span>
+    <span id="hayMuertos" class="hayMuertos-span badge"></span> 
+    <span id="todosVivos" class="todosVivos-span badge"></span>
 
     <section id="resultados" class="personajes-grid"></section>
   </main>
