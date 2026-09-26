@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #10141d;
+  color: #fefeff;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.filtros input,
+.filtros select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #172033;
+  color: inherit;
+}
+
+/* TODO: dale layout a .personajes-grid con CSS Grid o con Flexbox.
+   Compara las dos versiones en "Grid vs Flex" antes de decidir cuál usar aquí. */
+.personajes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+  margin: 10px 0 0 0;
+}
+
+.personaje-card {
+  position: relative;
+  background: #172033;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.personaje-card img {
+  width: 100%;
+  display: block;
+}
+
+.personaje-card h3,
+.personaje-card p {
+  margin: 8px 12px;
+}
+
+.res-button {
+  min-height: 42px;
+  padding: 0 16px;
+  color: #c7d0e6;
+  background: #171e30;
+  border: 1px solid #262f45;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.res-button:hover {
+  color: #d4ffb0;
+  border-color: #97ce4c;
+  outline: none;
+}
+
+.contador {
+  margin: 0 0 6px;
+  color: #8d97b3;
+  font-size: 1rem;
+}
+
+.contadoresIndividuales-span {
+  color: #8d97b3;
+  font-size: 0.92rem;
+}
+
+.todosVivos-span {
+  color: #b6f3ce;
+  background: rgba(151, 206, 76, 0.16);
+}
+
+.hayMuertos-span:empty,
+.todosVivos-span:empty {
+  display: none;
+}
+
+.hayMuertos-span {
+  color: #ffb3b3;
+  background: rgba(240, 96, 96, 0.16);
+}
+
+.badge {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.badge-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px 2px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.badge-alive {
+  color: #b6f3ce;
+  background: rgba(151, 206, 76, 0.16);
+}
+
+.badge-dead {
+  color: #ffb3b3;
+  background: rgba(240, 96, 96, 0.16);
+}
+
+.badge-unknown {
+  color: #f2e19e;
+  background: rgba(242, 210, 22, 0.14);
+}
+
+.especie{
+  color: #8d97b3;
+  font-size: .78rem;
+}
+
+.card-id{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  color: #d4ffb0;
+  background: rgba(9, 12, 20, .72);
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  backdrop-filter: blur(2px);
+}
+
+.ordenar{
+  min-height: 38px;
+  padding: 0 16px;
+  color: #c7d0e6;
+  background: #171e30;
+  border: 1px solid #262f45;
+  border-radius: 999px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+
+.ordenar:hover{
+  border-color: #97ce4c;
+  outline: none;
+}
+
+.ordenar[aria-pressed="true"]{
+  color: #0d1f18;
+  background: #9ee66a;
+  border-color: #9ee66a;
+}
+
+.opciones{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+/* Estilos y animacion de checkbox fueron hechos usando inteligencia artificial */
+.checkbox-control {
+  appearance: none;         
+  -webkit-appearance: none; 
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555;  
+  border-radius: 4px;       
+  background: #1a1e29;     
+  cursor: pointer;
+  display: grid;
+  place-content: center;    
+  transition: all 0.2s ease;
+}
+
+.checkbox-control:hover {
+  border-color: #9ee66a;    
+}
+
+.checkbox-control:checked {
+  background-color: #9ee66a; 
+  border-color: #9ee66a;
+}
+
+.checkbox-control::before {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid #0d1f18;  
+  border-bottom: 2px solid #0d1f18;
+  transform: rotate(-45deg) scale(0); 
+  transition: transform 0.1s ease-in-out;
+  margin-top: -2px;                
+}
+
+.checkbox-control:checked::before {
+  transform: rotate(-45deg) scale(1); 
+}
+
+.checkbox-label {
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}

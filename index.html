@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Buscador de personajes — Rick and Morty</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Buscador de personajes</h1>
+      </header>
+
+      <form class="filtros">
+        <input
+          type="text"
+          id="filtro-nombre"
+          placeholder="Buscar por nombre..."
+        />
+        <select id="filtro-estado">
+          <option value="">Todos los estados</option>
+          <option value="Alive">Vivo</option>
+          <option value="Dead">Muerto</option>
+          <option value="unknown">Desconocido</option>
+        </select>
+        <select id="filtro-especie">
+          <option value="">Todas las especies</option>
+          <option value="Human">Humano</option>
+          <option value="Alien">Alien</option>
+        </select>
+        <button class="res-button" type="reset" onclick="aplicarFiltros()">
+          Reiniciar filtros
+        </button>
+      </form>
+
+      <div class="opciones">
+        <button type="button" id="ordenar" class="ordenar" aria-pressed="false">Ordenar A-Z</button>
+        <input type="checkbox" id="cb-mostrarDiez" class="checkbox-control" />
+        <label for="cb-mostrarDiez" class="checkbox-label">Mostrar solo los 10 primeros</label>
+      </div>
+
+      <p id="contador" class="contador"></p>
+      <span id="contadoresIndividuales"class="contadoresIndividuales-span"></span>
+      <span id="hayMuertos" class="hayMuertos-span badge"></span>
+      <span id="todosVivos" class="todosVivos-span badge"></span>
+
+      <section id="resultados" class="personajes-grid"></section>
+    </main>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>
